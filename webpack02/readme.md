@@ -1,0 +1,1 @@
+有关  typescript   配置
