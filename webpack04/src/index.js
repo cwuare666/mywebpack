@@ -1,15 +1,30 @@
 import React from 'react';
 import { render } from 'react-dom';
+import AnimationRouter from './router';
 
-// ReactDom.render(
+import { Link } from 'react-router-dom';
+
+// render(
 // 		<div>33333</div>,
-// 		document.getElementById('root');
+// 		document.getElementById('root')
 // 	)
 const App = {
   run:function(){
     console.log(App)
    	render(
-	    <div>33333</div>,
+	    <div>
+	    	{/*<nav>
+	    		<ul>
+	    			<li>
+	    				<Link to="/home">首页</Link>
+	    			</li>
+	    			<li>
+	    				<Link to="/about">关于</Link>
+	    			</li>
+	    		</ul>
+	    	</nav>*/}
+	    	<AnimationRouter />
+	    </div>,
       	document.getElementById('root')
     )
   }

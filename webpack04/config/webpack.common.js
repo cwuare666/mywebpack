@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebapckPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+const srcPath = path.resolve(__dirname,'../src');
+
 module.exports = {
 	entry: {
 		index: './src/index.js'
@@ -14,7 +16,9 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['.jsx', '.js'],
-		alias: {}
+		alias: {
+			pages: `${srcPath}/pages`
+		}
 	},
 	module: {
 		rules: [
@@ -26,8 +30,9 @@ module.exports = {
 			    use: {
 			      loader: 'babel-loader',
 			      options: {
-			        presets: ['@babel/preset-env'],
-			        plugins: ['@babel/transform-runtime']
+			      	"babelrc": false, //设置false 不需要访问 babelrc文件
+			        presets: ["@babel/preset-env", "@babel/react"],
+			        plugins: ['@babel/transform-runtime', "dynamic-import-webpack"]
 			      }
 			    }
 			}
