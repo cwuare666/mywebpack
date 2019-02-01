@@ -2,23 +2,23 @@ import React, { Suspense, Component } from 'react';
 
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import Homes from 'pages/Home';
+require('./style.scss')
+
+//import Homes from 'pages/Home';
 //import About from '../pages/About';
 
-
-const Home = React.lazy(() => import('../pages/Home'));
-const About = React.lazy(() => import('../pages/About'));
+//const Home = React.lazy(() => import('../pages/Home'));
+//const About = React.lazy(() => import('../pages/About'));
 
 const routers = [
 	{
 		path: '/home',
-		component: React.lazy(() => import('../pages/Home'))
+		component: React.lazy(() => import(`_pages/Home`))
 	},{
 		path: '/about',
-		component: React.lazy(() => import('../pages/About'))
+		component: React.lazy(() => import(`_pages/About`))
 	}
 ]
-
 
 import { 
 	BrowserRouter,
@@ -29,7 +29,6 @@ import {
 } from 'react-router-dom';
 class AnimationRouter extends Component{
 	render(){
-		console.log(location)
 		return(
 			<BrowserRouter>
 				<Route
@@ -51,11 +50,12 @@ class AnimationRouter extends Component{
 				    		<div>
 								<TransitionGroup>
 									<CSSTransition
+										key={location.key}
 										classNames="fade"
 										timeout={300}
 									>
 										<Suspense fallback={<div>Loading...</div>}>
-											<Switch>
+											<Switch location={location}>
 												{
 													routers.map((item, index) => {
 														return (

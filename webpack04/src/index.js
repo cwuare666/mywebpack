@@ -4,6 +4,8 @@ import AnimationRouter from './router';
 
 import { Link } from 'react-router-dom';
 
+require('_rootPath/commonStyle.scss');
+
 // render(
 // 		<div>33333</div>,
 // 		document.getElementById('root')
