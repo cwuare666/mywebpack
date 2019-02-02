@@ -15,16 +15,6 @@ const App = {
     console.log(App)
    	render(
 	    <div>
-	    	{/*<nav>
-	    		<ul>
-	    			<li>
-	    				<Link to="/home">首页</Link>
-	    			</li>
-	    			<li>
-	    				<Link to="/about">关于</Link>
-	    			</li>
-	    		</ul>
-	    	</nav>*/}
 	    	<AnimationRouter />
 	    </div>,
       	document.getElementById('root')

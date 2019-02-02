@@ -17,7 +17,6 @@ module.exports = {
 		path: path.resolve(__dirname, '../dist')
 	},
 	externals : {
-	  	'React': 'react',
 	},
 	resolve: {
 		extensions: ['.jsx', '.js'],
@@ -69,26 +68,6 @@ module.exports = {
 						'css-loader',
 						'sass-loader'
 					]
-					// ExtractTextPlugin.extract({
-				 //        fallback: 'style-loader',
-				 //        //如果需要，可以在 sass-loader 之前将 resolve-url-loader 链接进来
-				 //        use: ['css-loader', 'sass-loader']
-			  //       })
-
-					// [{
-					//   	loader: "style-loader" // 将 JS 字符串生成为 style 节点
-					// }, {
-					//   	loader: "css-loader", // 将 CSS 转化成 CommonJS 模块
-					// 	options: {
-					// 		sourceMap: true
-					// 	}
-					// }, {
-					//   	loader: "sass-loader", // 将 Sass 编译成 CSS
-					// 	options: {
-					// 		sourceMap: true,
-					// 		data: "$env: " + process.env.NODE_ENV + ";"
-					// 	}
-					// }]
 			    }]
 	},
 	plugins: [
@@ -97,7 +76,6 @@ module.exports = {
 			title: 'test04'
 		}),
 		new webpack.HashedModuleIdsPlugin(),
-		//new ExtractTextPlugin('./css/style.min.css')
 		new MiniCssExtractPlugin({
 			filename: "./css/[name].[chunkhash:8].css",
 		})
