@@ -1,10 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebapckPlugin = require('clean-webpack-plugin');
-
+const HtmlIncludeAssetsPlugin = require("html-webpack-include-assets-plugin");
+//复制文件
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 //const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const srcPath = path.resolve(__dirname,'../src');
 
@@ -14,7 +17,9 @@ module.exports = {
 	},
 	output: {
 		filename: './js/[name].[hash].js',
-		path: path.resolve(__dirname, '../dist')
+		path: path.resolve(__dirname, '../dist'),
+		// libraryTarget: "var",
+		// library: "[name]_[hash]",
 	},
 	externals : {
 	},
@@ -71,13 +76,28 @@ module.exports = {
 			    }]
 	},
 	plugins: [
+		new ProgressBarPlugin(),
 		new HtmlWebpackPlugin({
 			template: './template/index.html',
-			title: 'test04'
+			title: 'test04',
 		}),
-		new webpack.HashedModuleIdsPlugin(),
 		new MiniCssExtractPlugin({
 			filename: "./css/[name].[chunkhash:8].css",
-		})
+		}),
+		new HtmlIncludeAssetsPlugin({
+			assets: [{ path: "static", glob: "vendor_*.js", globPath: "static/" }], // 添加的资源相对html的路径
+			append: false, // false 在其他资源的之前添加 true 在其他资源之后添加
+		}),
+		new webpack.DllReferencePlugin({
+		  	// 描述 react 动态链接库的文件内容
+		  	manifest: require('../static/vendor.json'),
+		}),
+		new CopyWebpackPlugin([
+		      	{
+		      		from: 'static',
+		      		to: 'static'
+		      	}
+		    ]
+		)
 	]
 }

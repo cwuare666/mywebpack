@@ -22,6 +22,7 @@ module.exports = merge(common, {
 		},
 	},
 	plugins: [
+		new webpack.HashedModuleIdsPlugin(),
 		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 	]
