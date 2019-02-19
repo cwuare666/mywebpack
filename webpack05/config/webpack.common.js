@@ -29,6 +29,7 @@ module.exports = {
 			_rootPath: `${srcPath}`,
 			_pages: `${srcPath}/pages`,
 			_image: `${srcPath}/image`,
+			_redux: `${srcPath}/redux`,
 		}
 	},
 	stats: 'errors-only',
@@ -43,7 +44,7 @@ module.exports = {
 					    options: {
 					      	"babelrc": false, //设置false 不需要访问 babelrc文件
 					        presets: ["@babel/preset-env", "@babel/react"],
-					        plugins: ['@babel/transform-runtime', "dynamic-import-webpack"]
+					        plugins: ['@babel/plugin-proposal-class-properties', '@babel/transform-runtime', "dynamic-import-webpack"]
 					    }
 				    }
 				},{
