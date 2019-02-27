@@ -1,0 +1,17 @@
+
+
+@mixin g-transition($opt){
+	//opt: str1, str2, str3;
+	$value: '';
+	@each $name in $opt {
+		$val: $name 1s linear 0s;
+		@if $value == ''{
+			$value: $val;
+		}@else{
+			$value: $val, $value;
+		}
+	}
+	transition: $value;
+	display: flex;
+}
+

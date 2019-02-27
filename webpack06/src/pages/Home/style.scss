@@ -1,0 +1,12 @@
+@import '_src/style/mixin.scss';
+
+.home-content {
+	width: 100%;
+	height: 500px;
+	background-color: #0000ff;
+
+	.content{
+		width: 100%;
+		height: 600px;
+	}
+}
