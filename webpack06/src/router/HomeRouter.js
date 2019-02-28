@@ -26,7 +26,6 @@ import {
 } from 'react-router-dom';
 class HomeRouterRouter extends Component{
 	render(){
-		console.log(this.props.match)
 		return(
 			<BrowserRouter>
 				<Route
@@ -45,16 +44,13 @@ class HomeRouterRouter extends Component{
 								>
 									<Suspense fallback={<div>Loading...</div>}>
 										<Switch location={location}>
-											{/*{
+											{
 												routers.map((item, index) => {
 													return (
 														<Route key={`router${index}`} exact path={item.path} component={item.component} />
 													)
 												})
-											}*/}
-											<Route exact path='/home/testfirst' component={React.lazy(() => import(`_pages/Test`))} />
-											<Route exact path='/home/testsecond' component={React.lazy(() => import(`_pages/Test/TestSecond`))} />
-											<Route exact path='/home/about' component={React.lazy(() => import(`_pages/About`))} />
+											}
 										</Switch>
 									</Suspense>
 								</CSSTransition>

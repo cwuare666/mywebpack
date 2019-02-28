@@ -18,7 +18,6 @@ class Home extends React.Component{
 		console.log(111);
 	}
 	render(){
-		console.log(this.props.match, 'this.props.match')
 		const match = this.props.match;
 		return(
 			<div className="home-content">
