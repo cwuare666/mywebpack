@@ -11,6 +11,8 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 const srcPath = path.resolve(__dirname,'../src');
 
+const isDev = !!process.env.NODE_ENV;
+
 module.exports = {
 	entry: {
 		index: './src/index.js'
@@ -71,7 +73,7 @@ module.exports = {
 			    },{
 					test: /\.(css|scss)$/,
 					use: [
-						MiniCssExtractPlugin.loader,
+						isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
 						'css-loader',
 						'postcss-loader',
 						'sass-loader',
